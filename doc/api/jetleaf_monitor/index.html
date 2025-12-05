@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="jetleaf_monitor library API docs, for the Dart programming language.">
+  <title>jetleaf_monitor library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">jetleaf_monitor</a></li>
+    <li class="self-crumb">jetleaf_monitor.dart</li>
+  </ol>
+  <div class="self-name">jetleaf_monitor</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar=""
+    data-below-sidebar="jetleaf_monitor&#47;jetleaf_monitor-library-sidebar.html">
+  
+    <div>
+      
+
+      <h1>
+        <span class="kind-library">jetleaf_monitor</span>
+        library 
+ 
+
+      </h1>
+    </div>
+
+    
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+      <dl>
+          <dt id="AbstractMemoryAnalytics">
+  <span class="name "><a href="../jetleaf_monitor/AbstractMemoryAnalytics-class.html">AbstractMemoryAnalytics</a></span> 
+
+</dt>
+<dd>
+  A convenience base class for <a href="../jetleaf_monitor/MemoryAnalytics-class.html">MemoryAnalytics</a> implementations that provides
+derived metrics commonly needed by diagnostics, dashboards, and monitoring
+subsystems.
+</dd>
+
+          <dt id="AbstractMemoryReading">
+  <span class="name "><a href="../jetleaf_monitor/AbstractMemoryReading-class.html">AbstractMemoryReading</a></span> 
+
+</dt>
+<dd>
+  A base implementation of <a href="../jetleaf_monitor/MemoryReading-class.html">MemoryReading</a> that provides common
+utilities for representing memory usage.
+</dd>
+
+          <dt id="AbstractMonitoringService">
+  <span class="name "><a href="../jetleaf_monitor/AbstractMonitoringService-class.html">AbstractMonitoringService</a></span> 
+
+</dt>
+<dd>
+  Provides a full-featured, periodic memory-monitoring service with support for:
+</dd>
+
+          <dt id="AbstractPerformance">
+  <span class="name "><a href="../jetleaf_monitor/AbstractPerformance-class.html">AbstractPerformance</a></span> 
+
+</dt>
+<dd>
+  Base implementation of <a href="../jetleaf_monitor/Performance-class.html">Performance</a> providing common functionality
+and utility methods for concrete performance tracking objects.
+</dd>
+
+          <dt id="ConfigurablePerformance">
+  <span class="name "><a href="../jetleaf_monitor/ConfigurablePerformance-class.html">ConfigurablePerformance</a></span> 
+
+</dt>
+<dd>
+  A <strong>mutable implementation</strong> of <a href="../jetleaf_monitor/Performance-class.html">Performance</a>, intended for constructing,
+editing, testing, or manually instrumenting performance data.
+</dd>
+
+          <dt id="DefaultMemoryAnalytics">
+  <span class="name "><a href="../jetleaf_monitor/DefaultMemoryAnalytics-class.html">DefaultMemoryAnalytics</a></span> 
+
+</dt>
+<dd>
+  A concrete implementation of <a href="../jetleaf_monitor/AbstractMemoryAnalytics-class.html">AbstractMemoryAnalytics</a> that provides
+computed memory metrics over a defined observation window.
+</dd>
+
+          <dt id="DefaultMemoryReading">
+  <span class="name "><a href="../jetleaf_monitor/DefaultMemoryReading-class.html">DefaultMemoryReading</a></span> 
+
+</dt>
+<dd>
+  A concrete implementation of <a href="../jetleaf_monitor/AbstractMemoryReading-class.html">AbstractMemoryReading</a> representing
+a single memory snapshot of the application at a given point in time.
+</dd>
+
+          <dt id="DefaultMonitoringReport">
+  <span class="name "><a href="../jetleaf_monitor/DefaultMonitoringReport-class.html">DefaultMonitoringReport</a></span> 
+
+</dt>
+<dd>
+  Default implementation of <a href="../jetleaf_monitor/MonitoringReport-class.html">MonitoringReport</a> that aggregates
+system-level, memory-level, and application-level runtime data.
+</dd>
+
+          <dt id="DefaultMonitoringService">
+  <span class="name "><a href="../jetleaf_monitor/DefaultMonitoringService-class.html">DefaultMonitoringService</a></span> 
+
+</dt>
+<dd>
+  A concrete implementation of <a href="../jetleaf_monitor/MonitoringService-class.html">MonitoringService</a> that provides:
+</dd>
+
+          <dt id="DefaultProcessInformation">
+  <span class="name "><a href="../jetleaf_monitor/DefaultProcessInformation-class.html">DefaultProcessInformation</a></span> 
+
+</dt>
+<dd>
+  Default implementation of <a href="../jetleaf_monitor/ProcessInformation-class.html">ProcessInformation</a> that provides
+metadata about the current running Dart process and the underlying
+operating system.
+</dd>
+
+          <dt id="InstancePerformanceTracker">
+  <span class="name "><a href="../jetleaf_monitor/InstancePerformanceTracker-class.html">InstancePerformanceTracker</a></span> 
+
+</dt>
+<dd>
+  Tracks the performance of JetLeaf pod instances during their lifecycle.
+</dd>
+
+          <dt id="MemoryAnalytics">
+  <span class="name "><a href="../jetleaf_monitor/MemoryAnalytics-class.html">MemoryAnalytics</a></span> 
+
+</dt>
+<dd>
+  Represents a computed analytical view over a collection of
+<a href="../jetleaf_monitor/MemoryReading-class.html">MemoryReading</a> snapshots taken during a defined observation window.
+</dd>
+
+          <dt id="MemoryReading">
+  <span class="name "><a href="../jetleaf_monitor/MemoryReading-class.html">MemoryReading</a></span> 
+
+</dt>
+<dd>
+  Represents a snapshot of runtime memory consumption and uptime
+for a JetLeaf-managed process or subsystem.
+</dd>
+
+          <dt id="MethodPerformanceTracker">
+  <span class="name "><a href="../jetleaf_monitor/MethodPerformanceTracker-class.html">MethodPerformanceTracker</a></span> 
+
+</dt>
+<dd>
+  Tracks the execution performance of methods annotated with <a href="../jetleaf_monitor/Monitor-class.html">Monitor</a>.
+</dd>
+
+          <dt id="Monitor">
+  <span class="name "><a href="../jetleaf_monitor/Monitor-class.html">Monitor</a></span> 
+
+</dt>
+<dd>
+  Annotation used to <strong>enable performance monitoring</strong> for a class or method
+within the JetLeaf runtime.
+</dd>
+
+          <dt id="MonitoringReport">
+  <span class="name "><a href="../jetleaf_monitor/MonitoringReport-class.html">MonitoringReport</a></span> 
+
+</dt>
+<dd>
+  Represents a full, structured snapshot of the application's runtime health,
+combining process-level metadata, memory analytics, and historical readings.
+</dd>
+
+          <dt id="MonitoringService">
+  <span class="name "><a href="../jetleaf_monitor/MonitoringService-class.html">MonitoringService</a></span> 
+
+</dt>
+<dd>
+  Provides runtime observability for memory usage, performance tracking,
+and historical diagnostic data within a JetLeaf application.
+</dd>
+
+          <dt id="Performance">
+  <span class="name "><a href="../jetleaf_monitor/Performance-class.html">Performance</a></span> 
+
+</dt>
+<dd>
+  Represents a single tracked execution event—such as a <strong>method call</strong>
+or <strong>class instantiation</strong>—and provides detailed performance, timing,
+memory, and error metrics associated with that execution.
+</dd>
+
+          <dt id="ProcessInformation">
+  <span class="name "><a href="../jetleaf_monitor/ProcessInformation-class.html">ProcessInformation</a></span> 
+
+</dt>
+<dd>
+  Provides an abstraction for retrieving detailed runtime and operating-system–
+level information about the current Dart process.
+</dd>
+
+      </dl>
+    </section>
+
+
+
+
+
+
+
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">jetleaf_monitor</a></li>
+    <li class="self-crumb">jetleaf_monitor.dart</li>
+</ol>
+
+    <h5><span class="package-name">jetleaf_monitor</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="../jetleaf_monitor/">jetleaf_monitor</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <h5>jetleaf_monitor library</h5>
+  </div><!--/sidebar-offcanvas-right-->
+</main>
+<footer>
+  <span class="no-break">
+    jetleaf_monitor
+      1.0.0
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
