@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Performance class from the jetleaf_monitor library, for the Dart programming language.">
+  <title>Performance class - jetleaf_monitor library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">jetleaf_monitor</a></li>
+    <li><a href="../jetleaf_monitor/">jetleaf_monitor.dart</a></li>
+    <li class="self-crumb">Performance class</li>
+  </ol>
+  <div class="self-name">Performance</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="jetleaf_monitor&#47;jetleaf_monitor-library-sidebar.html"
+    data-below-sidebar="jetleaf_monitor&#47;Performance-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">Performance</span> class 
+    <a href="https://dart.dev/language/class-modifiers#abstract" class="feature feature-abstract" title="This type can not be directly constructed.">abstract</a>
+    <a href="https://dart.dev/language/class-modifiers#interface" class="feature feature-interface" title="This class can only be implemented (not extended or mixed in).">interface</a>
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Represents a single tracked execution event—such as a <strong>method call</strong>
+or <strong>class instantiation</strong>—and provides detailed performance, timing,
+memory, and error metrics associated with that execution.</p>
+<p>A <code>Performance</code> instance is typically created by JetLeaf’s automatic
+tracking system, allowing diagnostic tools, analytics dashboards, and
+profiling utilities to understand how individual operations behave at
+runtime.</p>
+<p>Implementations must be immutable snapshots and must serialize all
+values deterministically via <a href="https://pub.dev/documentation/jetleaf_core/1.0.6/jetleaf_core/ToJsonFactory-class.html">ToJsonFactory</a>.</p>
+<hr>
+<h2 id="-what-performance-tracks">📊 What <code>Performance</code> Tracks</h2>
+<p>A performance record captures:</p>
+<ul>
+<li><strong>Name</strong> of the method or class being executed</li>
+<li><strong>Start Time</strong> when execution began</li>
+<li><strong>End Time</strong> when execution completed (or last updated if still running)</li>
+<li><strong>Run Period</strong> (end − start)</li>
+<li><strong>IP Address</strong> associated with the request (if applicable)</li>
+<li><strong>Running State</strong> (whether the execution is ongoing)</li>
+<li><strong>Memory Analytics</strong>, allowing analysis of memory behavior <em>during</em> execution</li>
+<li><strong>Error Counts</strong>, grouped by error type and by specific error</li>
+</ul>
+<p>These metrics enable debugging, performance optimization, anomaly detection,
+and operational monitoring.</p>
+<hr>
+<h2 id="-typical-usage">🔧 Typical Usage</h2>
+<pre class="language-dart"><code class="language-dart">final performance = tracker.track(() {
+  // some expensive operation
+});
+
+print(performance.getRunPeriod());
+print(performance.getMemoryAnalytics().getMaximumMemoryInMegaByte());
+print(performance.getErrorCounts());
+</code></pre>
+<hr>
+<h2 id="-design-notes">🔍 Design Notes</h2>
+<ul>
+<li><a href="../jetleaf_monitor/Performance/getRunPeriod.html">getRunPeriod</a> should always reflect real-time duration if the
+operation is still running.</li>
+<li>Error maps must be stable and deterministic across serializations.</li>
+<li>Memory analytics should reflect the readings captured <em>during this
+specific execution period</em>.</li>
+<li>Implementations must mix in <a href="https://pub.dev/documentation/jetleaf_build/1.0.5/jetleaf_build/EqualsAndHashCode-mixin.html">EqualsAndHashCode</a> for reliable
+structural comparison and testing.</li>
+</ul>
+</section>
+
+
+    <section>
+      <dl class="dl-horizontal">
+        
+
+        
+  <dt>Implemented types</dt>
+  <dd>
+    <ul class="comma-separated clazz-relationships">
+        <li><a href="https://pub.dev/documentation/jetleaf_core/1.0.6/jetleaf_core/ToJsonFactory-class.html">ToJsonFactory</a></li>
+    </ul>
+  </dd>
+        
+  <dt>Mixed-in types</dt>
+  <dd>
+    <ul class="comma-separated clazz-relationships">
+        <li><a href="https://pub.dev/documentation/jetleaf_build/1.0.5/jetleaf_build/EqualsAndHashCode-mixin.html">EqualsAndHashCode</a></li>
+    </ul>
+  </dd>
+
+          <dt>Implementers</dt>
+          <dd><ul class="comma-separated clazz-relationships">
+              <li><a href="../jetleaf_monitor/AbstractPerformance-class.html">AbstractPerformance</a></li>
+          </ul></dd>
+
+        
+        
+
+
+      </dl>
+    </section>
+
+    
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://pub.dev/documentation/jetleaf_build/1.0.5/jetleaf_build/EqualsAndHashCode/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="equalizedProperties" class="callable inherited">
+  <span class="name"><a href="https://pub.dev/documentation/jetleaf_build/1.0.5/jetleaf_build/EqualsAndHashCode/equalizedProperties.html">equalizedProperties</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object-class.html">Object</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Mixin-style contract for value-based equality, <code>hashCode</code>, and <code>toString</code>.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getEndTime" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/Performance/getEndTime.html">getEndTime</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <strong>timestamp when execution ended</strong>, or the most recent
+recorded checkpoint if the operation is still running.
+  
+
+</dd>
+
+        <dt id="getErrorCounts" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/Performance/getErrorCounts.html">getErrorCounts</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.2/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a map of <strong>specific error message/instance → count</strong>.
+  
+
+</dd>
+
+        <dt id="getErrorTypeCounts" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/Performance/getErrorTypeCounts.html">getErrorTypeCounts</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.2/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a map of <strong>error type → count</strong> representing how many errors
+of each <em>category</em> occurred during execution.
+  
+
+</dd>
+
+        <dt id="getIpAddress" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/Performance/getIpAddress.html">getIpAddress</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <strong>client or request IP address</strong>, if available.
+  
+
+</dd>
+
+        <dt id="getLocation" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/Performance/getLocation.html">getLocation</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Gets the location of the performing object.
+  
+
+</dd>
+
+        <dt id="getMemoryAnalytics" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/Performance/getMemoryAnalytics.html">getMemoryAnalytics</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="../jetleaf_monitor/MemoryAnalytics-class.html">MemoryAnalytics</a>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <a href="../jetleaf_monitor/MemoryAnalytics-class.html">MemoryAnalytics</a> captured during the execution period.
+  
+
+</dd>
+
+        <dt id="getName" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/Performance/getName.html">getName</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <strong>name</strong> of the method, function, or class being tracked.
+  
+
+</dd>
+
+        <dt id="getRunPeriod" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/Performance/getRunPeriod.html">getRunPeriod</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/Duration-class.html">Duration</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <strong>total duration</strong> of the tracked execution.
+  
+
+</dd>
+
+        <dt id="getStartTime" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/Performance/getStartTime.html">getStartTime</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <strong>timestamp when execution started</strong>.
+  
+
+</dd>
+
+        <dt id="isRunning" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/Performance/isRunning.html">isRunning</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns whether the tracked execution is <strong>still running</strong>.
+  
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toJson" class="callable inherited">
+  <span class="name"><a href="https://pub.dev/documentation/jetleaf_core/1.0.6/jetleaf_core/ToJsonFactory/toJson.html">toJson</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object-class.html">Object</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Converts this object into a JSON-compatible map.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://pub.dev/documentation/jetleaf_build/1.0.5/jetleaf_build/EqualsAndHashCode/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://pub.dev/documentation/jetleaf_build/1.0.5/jetleaf_build/EqualsAndHashCode/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">jetleaf_monitor</a></li>
+    <li><a href="../jetleaf_monitor/">jetleaf_monitor</a></li>
+    <li class="self-crumb">Performance class</li>
+</ol>
+
+    <h5>jetleaf_monitor library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    jetleaf_monitor
+      1.0.0
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

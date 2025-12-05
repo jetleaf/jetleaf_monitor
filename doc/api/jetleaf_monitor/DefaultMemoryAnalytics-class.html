@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the DefaultMemoryAnalytics class from the jetleaf_monitor library, for the Dart programming language.">
+  <title>DefaultMemoryAnalytics class - jetleaf_monitor library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">jetleaf_monitor</a></li>
+    <li><a href="../jetleaf_monitor/">jetleaf_monitor.dart</a></li>
+    <li class="self-crumb">DefaultMemoryAnalytics class</li>
+  </ol>
+  <div class="self-name">DefaultMemoryAnalytics</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="jetleaf_monitor&#47;jetleaf_monitor-library-sidebar.html"
+    data-below-sidebar="jetleaf_monitor&#47;DefaultMemoryAnalytics-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">DefaultMemoryAnalytics</span> class 
+    <a href="https://dart.dev/language/class-modifiers#final" class="feature feature-final" title="This class can neither be extended, implemented, nor mixed in.">final</a>
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>A concrete implementation of <a href="../jetleaf_monitor/AbstractMemoryAnalytics-class.html">AbstractMemoryAnalytics</a> that provides
+computed memory metrics over a defined observation window.</p>
+<p><code>DefaultMemoryAnalytics</code> aggregates multiple <a href="../jetleaf_monitor/MemoryReading-class.html">MemoryReading</a> snapshots
+and exposes statistical metrics such as:</p>
+<ul>
+<li>Minimum memory usage (_minMemoryMB)</li>
+<li>Maximum memory usage (_maxMemoryMB)</li>
+<li>Average memory usage (_avgMemoryMB)</li>
+<li>Current memory usage (_currentMemoryMB)</li>
+</ul>
+<p>It also preserves:</p>
+<ul>
+<li>The time window over which the readings were collected (_timeWindow)</li>
+<li>The raw list of memory readings (_readings)</li>
+</ul>
+<p>This class is immutable and intended for:</p>
+<ul>
+<li>Feeding memory analytics into monitoring dashboards</li>
+<li>Performing trend analysis and diagnostics</li>
+<li>Serializing memory metrics for reporting</li>
+</ul>
+<hr>
+<h2 id="example">Example</h2>
+<pre class="language-dart"><code class="language-dart">final analytics = DefaultMemoryAnalytics(
+  timeWindow: Duration(minutes: 5),
+  minMemoryMB: 120.0,
+  maxMemoryMB: 450.0,
+  avgMemoryMB: 300.0,
+  currentMemoryMB: 320.0,
+  readings: memoryReadings,
+);
+
+print(analytics.getAverageMemoryInMegaByte()); // 300.0 MB
+print(analytics.getTimeWindow()); // Duration(minutes: 5)
+</code></pre>
+</section>
+
+
+    <section>
+      <dl class="dl-horizontal">
+        
+  <dt>Inheritance</dt>
+  <dd>
+    <ul class="gt-separated dark clazz-relationships">
+      <li><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object-class.html">Object</a></li>
+        <li><a href="../jetleaf_monitor/AbstractMemoryAnalytics-class.html">AbstractMemoryAnalytics</a></li>
+      <li>DefaultMemoryAnalytics</li>
+    </ul>
+  </dd>
+
+        
+        
+
+
+        
+        
+
+
+      </dl>
+    </section>
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="DefaultMemoryAnalytics.new" class="callable">
+          <span class="name"><a href="../jetleaf_monitor/DefaultMemoryAnalytics/DefaultMemoryAnalytics.html">DefaultMemoryAnalytics.new</a></span><span class="signature">({<span class="parameter" id="-param-timeWindow"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Duration-class.html">Duration</a></span> <span class="parameter-name">timeWindow</span> = <span class="default-value">Duration.zero</span>, </span><span class="parameter" id="-param-minMemoryMB"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.2/dart-core/double-class.html">double</a></span> <span class="parameter-name">minMemoryMB</span> = <span class="default-value">0.0</span>, </span><span class="parameter" id="-param-maxMemoryMB"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.2/dart-core/double-class.html">double</a></span> <span class="parameter-name">maxMemoryMB</span> = <span class="default-value">0.0</span>, </span><span class="parameter" id="-param-avgMemoryMB"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.2/dart-core/double-class.html">double</a></span> <span class="parameter-name">avgMemoryMB</span> = <span class="default-value">0.0</span>, </span><span class="parameter" id="-param-currentMemoryMB"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.2/dart-core/double-class.html">double</a></span> <span class="parameter-name">currentMemoryMB</span> = <span class="default-value">0.0</span>, </span><span class="parameter" id="-param-readings"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../jetleaf_monitor/MemoryReading-class.html">MemoryReading</a></span>&gt;</span>?</span> <span class="parameter-name">readings</span></span>})</span>
+        </dt>
+        <dd>
+          A concrete implementation of <a href="../jetleaf_monitor/AbstractMemoryAnalytics-class.html">AbstractMemoryAnalytics</a> that provides
+computed memory metrics over a defined observation window.
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="equalizedProperties" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/DefaultMemoryAnalytics/equalizedProperties.html">equalizedProperties</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object-class.html">Object</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Mixin-style contract for value-based equality, <code>hashCode</code>, and <code>toString</code>.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="getAverageMemoryInMegaByte" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/DefaultMemoryAnalytics/getAverageMemoryInMegaByte.html">getAverageMemoryInMegaByte</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://pub.dev/documentation/jetleaf_lang/1.0.6/jetleaf_lang/Double-class.html">Double</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Computes and returns the average memory usage (in megabytes)
+across all <a href="../jetleaf_monitor/MemoryReading-class.html">MemoryReading</a> snapshots in the analytics window.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="getAverageMemoryInMegaByteString" class="callable inherited">
+  <span class="name"><a href="../jetleaf_monitor/AbstractMemoryAnalytics/getAverageMemoryInMegaByteString.html">getAverageMemoryInMegaByteString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns the average memory usage as a formatted string in megabytes.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getCurrentMemoryInMegaByte" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/DefaultMemoryAnalytics/getCurrentMemoryInMegaByte.html">getCurrentMemoryInMegaByte</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://pub.dev/documentation/jetleaf_lang/1.0.6/jetleaf_lang/Double-class.html">Double</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the most recently recorded memory usage (in megabytes).
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="getCurrentMemoryInMegaByteString" class="callable inherited">
+  <span class="name"><a href="../jetleaf_monitor/AbstractMemoryAnalytics/getCurrentMemoryInMegaByteString.html">getCurrentMemoryInMegaByteString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns the current memory usage as a formatted string in megabytes.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getMaximumDelta" class="callable inherited">
+  <span class="name"><a href="../jetleaf_monitor/AbstractMemoryAnalytics/getMaximumDelta.html">getMaximumDelta</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://pub.dev/documentation/jetleaf_lang/1.0.6/jetleaf_lang/Double-class.html">Double</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns the difference between the current memory usage and the
+maximum recorded memory value.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getMaximumDeltaString" class="callable inherited">
+  <span class="name"><a href="../jetleaf_monitor/AbstractMemoryAnalytics/getMaximumDeltaString.html">getMaximumDeltaString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns the maximum delta as a formatted string in megabytes.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getMaximumMemoryInMegaByte" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/DefaultMemoryAnalytics/getMaximumMemoryInMegaByte.html">getMaximumMemoryInMegaByte</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://pub.dev/documentation/jetleaf_lang/1.0.6/jetleaf_lang/Double-class.html">Double</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the highest recorded memory usage (in megabytes) observed
+during the analytics time window.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="getMaximumMemoryInMegaByteString" class="callable inherited">
+  <span class="name"><a href="../jetleaf_monitor/AbstractMemoryAnalytics/getMaximumMemoryInMegaByteString.html">getMaximumMemoryInMegaByteString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns the maximum memory usage as a formatted string in megabytes.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getMinimumDelta" class="callable inherited">
+  <span class="name"><a href="../jetleaf_monitor/AbstractMemoryAnalytics/getMinimumDelta.html">getMinimumDelta</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://pub.dev/documentation/jetleaf_lang/1.0.6/jetleaf_lang/Double-class.html">Double</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns the difference between the current memory usage and the
+minimum recorded memory value.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getMinimumDeltaString" class="callable inherited">
+  <span class="name"><a href="../jetleaf_monitor/AbstractMemoryAnalytics/getMinimumDeltaString.html">getMinimumDeltaString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns the minimum delta as a formatted string in megabytes.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getMinimumMemoryInMegaByte" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/DefaultMemoryAnalytics/getMinimumMemoryInMegaByte.html">getMinimumMemoryInMegaByte</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://pub.dev/documentation/jetleaf_lang/1.0.6/jetleaf_lang/Double-class.html">Double</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the lowest recorded memory usage (in megabytes) within
+the analytics time window.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="getMinimumMemoryInMegaByteString" class="callable inherited">
+  <span class="name"><a href="../jetleaf_monitor/AbstractMemoryAnalytics/getMinimumMemoryInMegaByteString.html">getMinimumMemoryInMegaByteString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns the minimum memory usage as a formatted string in megabytes.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getRange" class="callable inherited">
+  <span class="name"><a href="../jetleaf_monitor/AbstractMemoryAnalytics/getRange.html">getRange</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://pub.dev/documentation/jetleaf_lang/1.0.6/jetleaf_lang/Double-class.html">Double</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns the total memory amplitude (range) recorded within the
+analytics window.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getRangeString" class="callable inherited">
+  <span class="name"><a href="../jetleaf_monitor/AbstractMemoryAnalytics/getRangeString.html">getRangeString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Returns the range as a formatted string in megabytes.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getReadings" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/DefaultMemoryAnalytics/getReadings.html">getReadings</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../jetleaf_monitor/MemoryReading-class.html">MemoryReading</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the underlying list of <a href="../jetleaf_monitor/MemoryReading-class.html">MemoryReading</a> snapshots that
+were used to compute all aggregated metrics.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="getTimeWindow" class="callable">
+  <span class="name"><a href="../jetleaf_monitor/DefaultMemoryAnalytics/getTimeWindow.html">getTimeWindow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/Duration-class.html">Duration</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the total time span represented by this analytic view.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toJson" class="callable inherited">
+  <span class="name"><a href="../jetleaf_monitor/AbstractMemoryAnalytics/toJson.html">toJson</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object-class.html">Object</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Converts this object into a JSON-compatible map.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.9.2/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.9.2/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">jetleaf_monitor</a></li>
+    <li><a href="../jetleaf_monitor/">jetleaf_monitor</a></li>
+    <li class="self-crumb">DefaultMemoryAnalytics class</li>
+</ol>
+
+    <h5>jetleaf_monitor library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    jetleaf_monitor
+      1.0.0
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
