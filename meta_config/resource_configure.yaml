@@ -1,0 +1,2 @@
+jetleaf.enableautoconfiguration:
+  -  package:jetleaf_data/src/data_auto_configuration.dart.DataAutoConfiguration
