@@ -1,6 +1,6 @@
 name: jetleaf_monitor
 description: Actuator module for JetLeaf — provides health checks, performance metrics, diagnostics, and runtime monitoring.
-version: 1.0.0
+version: 1.0.1
 
 homepage: https://jetleaf.hapnium.com
 repository: https://github.com/jetleaf/jetleaf_monitor
@@ -29,8 +29,8 @@ dependencies:
   jetleaf_lang: ^1.0.6
   jetleaf_logging: ^1.0.6
   jetleaf_pod: ^1.0.6
-  jetleaf_core: ^1.0.6
-  jetleaf_env: ^1.0.6
+  jetleaf_core: ^1.0.7
+  jetleaf_env: ^1.0.7
 
 dev_dependencies:
   test: ^1.25.0
