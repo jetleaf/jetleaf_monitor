@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3]
+
+- Updated dependencies - `jetleaf_lang`, `jetleaf_env`, `jetleaf_logging`, `jetleaf_core` and `jetleaf_pod`
+
 ## [1.0.2]
 
 - Updated dependencies - `jetleaf_lang`, `jetleaf_env`, `jetleaf_logging`, `jetleaf_core` and `jetleaf_pod`
