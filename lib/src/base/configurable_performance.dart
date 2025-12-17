@@ -55,7 +55,7 @@ class ConfigurablePerformance extends AbstractPerformance {
   String? _ipAddress;
 
   /// The origin of the object
-  String _location;
+  final String _location;
 
   /// Tracks memory metrics during execution.
   MemoryAnalytics? _memoryAnalytics;
