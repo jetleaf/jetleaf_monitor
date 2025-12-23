@@ -107,7 +107,7 @@ abstract class AbstractMonitoringService extends InstancePerformanceTracker impl
     // 3. Methods → <package>::<Class>.<method>
     if (source case Method method) {
       final cls = method.getDeclaringClass();
-      final pkg = cls.getPackage()?.getName();
+      final pkg = cls.getPackage().getName();
       final className = cls.getSimpleName();
       final methodName = method.getName();
       return "$pkg::$className.$methodName";
@@ -115,7 +115,7 @@ abstract class AbstractMonitoringService extends InstancePerformanceTracker impl
 
     // 4. Classes → <package>::<Class>
     if (source case Class cls) {
-      final pkg = cls.getPackage()?.getName();
+      final pkg = cls.getPackage().getName();
       final className = cls.getSimpleName();
       return "$pkg::$className";
     }
