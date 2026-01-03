@@ -1,4 +1,3 @@
-import 'package:jetleaf_core/core.dart';
 import 'package:jetleaf_lang/lang.dart';
 
 import 'memory_reading.dart';
@@ -128,7 +127,7 @@ import 'memory_reading.dart';
 /// - [EqualsAndHashCode] — Ensures predictable structural comparison  
 ///
 /// {@endtemplate}
-abstract interface class MemoryAnalytics with EqualsAndHashCode implements ToJsonFactory {
+abstract interface class MemoryAnalytics with EqualsAndHashCode {
   /// Returns the lowest recorded memory usage (in megabytes) within
   /// the analytics time window.
   ///
@@ -207,6 +206,25 @@ abstract interface class MemoryAnalytics with EqualsAndHashCode implements ToJso
   /// }
   /// ```
   List<MemoryReading> getReadings();
+
+  /// Converts this object into a JSON-compatible map.
+  ///
+  /// The returned structure must be compatible with standard JSON encoders.
+  /// It should not contain:
+  /// - Arbitrary objects that cannot be serialized  
+  /// - Cyclic references  
+  /// - Non-primitive types unless explicitly supported  
+  ///
+  /// ### Returns
+  /// A `Map<String, Object>` containing all serializable fields that represent
+  /// this object's state.
+  ///
+  /// ### Example
+  /// ```dart
+  /// final json = myObject.toJson();
+  /// print(jsonEncode(json));
+  /// ```
+  Map<String, Object> toJson();
 }
 
 /// {@template abstract_memory_analytics}

@@ -1,4 +1,3 @@
-import 'package:jetleaf_core/core.dart';
 import 'package:jetleaf_lang/lang.dart';
 
 import 'memory_analytics.dart';
@@ -42,7 +41,7 @@ import 'process_information.dart';
 /// and be safe for logging, exporting, or dashboard presentation.
 ///
 /// {@endtemplate}
-abstract interface class MonitoringReport with EqualsAndHashCode implements ToJsonFactory {
+abstract interface class MonitoringReport with EqualsAndHashCode {
 /// Returns the exact **startup time** of the application.
   ///
   /// This value does not change across the lifetime of the app and is used to
@@ -91,4 +90,23 @@ abstract interface class MonitoringReport with EqualsAndHashCode implements ToJs
   ///
   /// This data is essential for diagnostics and environment-aware optimizers.
   ProcessInformation getProcessInformation();
+
+  /// Converts this object into a JSON-compatible map.
+  ///
+  /// The returned structure must be compatible with standard JSON encoders.
+  /// It should not contain:
+  /// - Arbitrary objects that cannot be serialized  
+  /// - Cyclic references  
+  /// - Non-primitive types unless explicitly supported  
+  ///
+  /// ### Returns
+  /// A `Map<String, Object>` containing all serializable fields that represent
+  /// this object's state.
+  ///
+  /// ### Example
+  /// ```dart
+  /// final json = myObject.toJson();
+  /// print(jsonEncode(json));
+  /// ```
+  Map<String, Object> toJson();
 }
