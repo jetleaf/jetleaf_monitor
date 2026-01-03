@@ -1,4 +1,3 @@
-import 'package:jetleaf_core/core.dart';
 import 'package:jetleaf_lang/lang.dart';
 
 /// {@template process_information}
@@ -43,7 +42,7 @@ import 'package:jetleaf_lang/lang.dart';
 /// - `LocaleName` should follow standard OS locale formatting  
 ///
 /// {@endtemplate}
-abstract interface class ProcessInformation with EqualsAndHashCode implements ToJsonFactory {
+abstract interface class ProcessInformation with EqualsAndHashCode {
   /// Returns the current **resident set size (RSS)** of the process in megabytes.
   ///
   /// RSS represents how much physical memory the process is actively using.
@@ -101,4 +100,23 @@ abstract interface class ProcessInformation with EqualsAndHashCode implements To
   ///
   /// Should match OS locale rules where possible.
   String getLocaleName();
+
+  /// Converts this object into a JSON-compatible map.
+  ///
+  /// The returned structure must be compatible with standard JSON encoders.
+  /// It should not contain:
+  /// - Arbitrary objects that cannot be serialized  
+  /// - Cyclic references  
+  /// - Non-primitive types unless explicitly supported  
+  ///
+  /// ### Returns
+  /// A `Map<String, Object>` containing all serializable fields that represent
+  /// this object's state.
+  ///
+  /// ### Example
+  /// ```dart
+  /// final json = myObject.toJson();
+  /// print(jsonEncode(json));
+  /// ```
+  Map<String, Object> toJson();
 }

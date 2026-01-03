@@ -1,4 +1,3 @@
-import 'package:jetleaf_core/core.dart';
 import 'package:jetleaf_lang/lang.dart';
 
 /// {@template memory_reading}
@@ -78,7 +77,7 @@ import 'package:jetleaf_lang/lang.dart';
 /// - [EqualsAndHashCode] — Enables deterministic comparison for testing  
 ///
 /// {@endtemplate}
-abstract interface class MemoryReading with EqualsAndHashCode implements ToJsonFactory {
+abstract interface class MemoryReading with EqualsAndHashCode {
   /// Timestamp representing when this memory reading snapshot was created.
   ///
   /// Implementations should generally return a UTC `DateTime` for consistency
@@ -99,6 +98,25 @@ abstract interface class MemoryReading with EqualsAndHashCode implements ToJsonF
   /// - The hosting process initialized,
   /// - or a specific subsystem began operation.
   Duration getUptime();
+
+  /// Converts this object into a JSON-compatible map.
+  ///
+  /// The returned structure must be compatible with standard JSON encoders.
+  /// It should not contain:
+  /// - Arbitrary objects that cannot be serialized  
+  /// - Cyclic references  
+  /// - Non-primitive types unless explicitly supported  
+  ///
+  /// ### Returns
+  /// A `Map<String, Object>` containing all serializable fields that represent
+  /// this object's state.
+  ///
+  /// ### Example
+  /// ```dart
+  /// final json = myObject.toJson();
+  /// print(jsonEncode(json));
+  /// ```
+  Map<String, Object> toJson();
 }
 
 /// {@template abstract_memory_reading}

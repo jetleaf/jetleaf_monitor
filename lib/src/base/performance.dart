@@ -1,4 +1,3 @@
-import 'package:jetleaf_core/core.dart';
 import 'package:jetleaf_lang/lang.dart';
 
 import 'memory_analytics.dart';
@@ -58,7 +57,7 @@ import 'memory_analytics.dart';
 ///   structural comparison and testing.
 ///
 /// {@endtemplate}
-abstract interface class Performance with EqualsAndHashCode implements ToJsonFactory {
+abstract interface class Performance with EqualsAndHashCode {
 /// Returns the **name** of the method, function, or class being tracked.
   ///
   /// This is typically derived from reflection, tracing metadata, or the
@@ -125,6 +124,25 @@ abstract interface class Performance with EqualsAndHashCode implements ToJsonFac
   /// 
   /// The location can be the method or class or instance which is being monitored.
   String getLocation();
+
+  /// Converts this object into a JSON-compatible map.
+  ///
+  /// The returned structure must be compatible with standard JSON encoders.
+  /// It should not contain:
+  /// - Arbitrary objects that cannot be serialized  
+  /// - Cyclic references  
+  /// - Non-primitive types unless explicitly supported  
+  ///
+  /// ### Returns
+  /// A `Map<String, Object>` containing all serializable fields that represent
+  /// this object's state.
+  ///
+  /// ### Example
+  /// ```dart
+  /// final json = myObject.toJson();
+  /// print(jsonEncode(json));
+  /// ```
+  Map<String, Object> toJson();
 }
 
 /// {@template abstract_performance}
